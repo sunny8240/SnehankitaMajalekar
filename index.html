@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Dr. Snehankita Majalekar - Assistant Professor at Pimpri Chinchwad University. Specializing in Cyber Security, Ethical Hacking, and Advanced Networking.">
+    <meta name="keywords"
+        content="Dr. Snehankita Majalekar, Cyber Security, Ethical Hacking, PCU, Computer Science, Research">
+    <meta name="author" content="Dr. Snehankita Majalekar">
+    <link rel="icon" href="/assect/favCo.png" type="image/x-icon">
+    <title>Dr. Snehankita Majalekar | Academic Portfolio</title>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        /* MOBILE FIX — Image first, then text, then cards */
+
+        /* MOBILE & TABLET layout: Image → Badge → Name → Description → Cards */
+        @media (max-width: 992px) {
+
+            .hero-content {
+                display: flex !important;
+                flex-direction: column-reverse !important;
+                gap: 2rem;
+            }
+
+            .hero-section {
+                padding-top: 1rem;
+                /* Fixes badge at top */
+            }
+
+            .hero-photo {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .photo-wrapper {
+                width: 18rem;
+                height: 18rem;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .hero-description {
+                text-align: center;
+            }
+
+            .quick-links {
+                grid-template-columns: 1fr 1fr !important;
+            }
+
+        }
+
+        .photo-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f3e8ff, #fce7f3);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            border: 4px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* prevents distortion */
+        }
+
+        .hero-section {
+            padding-top: 5.4rem;
+            /* Fixes badge at top */
+        }
+
+        /* Professional Profile Card */
+        .profile-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            top: 1rem;
+        }
+
+        .profile-ring {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            padding: 6px;
+            background: linear-gradient(135deg, #9333ea, #ec4899, #3b82f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-ring img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+        }
+
+        @media (max-width: 992px) {
+            .hero-badge {
+                display: inline-flex;
+                margin-top: 0.5rem;
+                justify-content: center;
+            }
+        }
+
+        /* NEW PROFESSIONAL EXPERTISE CARD DESIGN */
+        .expertise-card {
+            padding: 2rem 1.5rem;
+            background: white;
+            border-radius: 1.25rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f3e8ff;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Icon Container */
+        .expertise-icon {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .expertise-icon-bg {
+            width: 70px;
+            height: 70px;
+            border-radius: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+            transition: 0.3s ease;
+        }
+
+        /* Scale on hover */
+        .expertise-card:hover .expertise-icon-bg {
+            transform: scale(1.12);
+        }
+
+        /* Icon Size */
+        .expertise-icon-bg i {
+            width: 32px;
+            height: 32px;
+            color: #7e22ce;
+            /* Purple tone used in your theme */
+        }
+
+        .footer-icon i {
+            width: 1.4rem;
+            height: 1.4rem;
+            color: white;
+        }
+        .footer-dev-link {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.footer-dev-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.15);
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.75rem;
+    color: #ffffff;
+    font-weight: 500;
+    transition: 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.footer-dev-btn:hover {
+    background: rgba(255,255,255,0.25);
+    transform: translateY(-3px);
+}
+
+.footer-dev-btn i {
+    width: 1.3rem;
+    height: 1.3rem;
+}
+/* Global Lucide Icon Style */
+i[data-lucide] {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2.2;
+}
+/* Large Section Icon Box */
+.section-icon-box {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.section-icon-box i[data-lucide] {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: white;
+}
+
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav id="navigation">
+        <div class="nav-container">
+            <div class="nav-content">
+                <!-- Logo -->
+                <a href="#home" class="nav-logo">
+                    <div class="logo-icon">
+                        <i data-lucide="graduation-cap"></i>
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo-name">Dr. Snehankita Majalekar</div>
+                        <div class="logo-name-mobile">Dr. S. Majalekar</div>
+                        <div class="logo-subtitle">Assistant Professor, PCU</div>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="nav-links">
+                    <a href="#home" class="nav-link active" data-page="home">Home</a>
+                    <a href="#about" class="nav-link" data-page="about">About</a>
+                    <a href="#research" class="nav-link" data-page="research">Research</a>
+                    <a href="#books" class="nav-link" data-page="books">Books</a>
+                    <a href="#teaching" class="nav-link" data-page="teaching">Teaching</a>
+                    <a href="#responsibilities" class="nav-link" data-page="responsibilities">Responsibilities</a>
+                    <a href="#events" class="nav-link" data-page="events">Events</a>
+                    <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i data-lucide="menu" id="menuIcon"></i>
+                    <i data-lucide="x" id="closeIcon" style="display: none;"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="mobile-nav" id="mobileNav">
+                <a href="#home" class="mobile-nav-link active" data-page="home">Home</a>
+                <a href="#about" class="mobile-nav-link" data-page="about">About</a>
+                <a href="#research" class="mobile-nav-link" data-page="research">Research</a>
+                <a href="#books" class="mobile-nav-link" data-page="books">Books</a>
+                <a href="#teaching" class="mobile-nav-link" data-page="teaching">Teaching</a>
+                <a href="#responsibilities" class="mobile-nav-link" data-page="responsibilities">Responsibilities</a>
+                <a href="#events" class="mobile-nav-link" data-page="events">Events</a>
+                <a href="#contact" class="mobile-nav-link" data-page="contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- Pages will be dynamically loaded here -->
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-gradient"></div>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <!-- About Section -->
+                <div class="footer-section">
+                    <h3 class="footer-heading">
+                        <div class="footer-icon">
+                            <i data-lucide="book-open"></i>
+                        </div>
+                        Dr. Snehankita Majalekar
+                    </h3>
+                    <p class="footer-text">
+                        Assistant Professor<br>
+                        School of Computer Applications<br>
+                        Pimpri Chinchwad University
+                    </p>
+                    <p class="footer-specialization">
+                        Specializing in Cyber Security, Ethical Hacking, and Advanced Networking
+                    </p>
+                </div>
+
+                <!-- Quick Contact -->
+                <div class="footer-section">
+                    <h3 class="footer-heading">Quick Contact</h3>
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="mail"></i>
+                            </div>
+                            <a href="mailto:snehankitamajalekar@yahoo.com">snehankitamajalekar@yahoo.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="phone"></i>
+                            </div>
+                            <a href="tel:7057371098">7057371098</a>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="map-pin"></i>
+                            </div>
+                            <span>Pimpri Chinchwad University, Pune</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Profiles -->
+                <div class="footer-section">
+                    <h3 class="footer-heading">Academic Profiles</h3>
+                    <div class="footer-links">
+                        <a href="https://www.linkedin.com/in/dr-snehankita-majalekar-a41b31381/" target="_blank"
+                            rel="noopener noreferrer">
+                            <i data-lucide="external-link"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=BCErzFQAAAAJ" target="_blank"
+                            rel="noopener noreferrer">
+                            <i data-lucide="external-link"></i>
+                            <span>Google Scholar</span>
+                        </a>
+                        <a href="https://orcid.org/0009-0007-2748-9853" target="_blank" rel="noopener noreferrer">
+                            <i data-lucide="external-link"></i>
+                            <span>ORCID</span>
+                        </a>
+                        <a href="https://www.researchgate.net/profile/Snehankita-Majalekar" target="_blank"
+                            rel="noopener noreferrer">
+                            <i data-lucide="external-link"></i>
+                            <span>ResearchGate</span>
+                        </a>
+                        <a href="https://vidwan.inflibnet.ac.in/profile/659540" target="_blank"
+                            rel="noopener noreferrer">
+                            <i data-lucide="external-link"></i>
+                            <span>Vidwan</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom">
+                <p>
+                    © <span id="currentYear"></span> Dr. Snehankita Majalekar. All rights reserved.
+                </p>
+            </div>
+            <div class="footer-dev-link">
+    <a href="/pages/developer.html" class="footer-dev-btn">
+        <i data-lucide="code-2"></i>
+        <span>Developer</span>
+    </a>
+</div>
+
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/app.js"></script>
+    <script src="/js/pages.js"></script>
+</body>
+
+</html>
