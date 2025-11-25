@@ -333,9 +333,9 @@ const pages = {
                                     My Journey
                                 </h2>
                                 <div style="width:100%; display:flex; justify-content:flex-end; margin-top:0.5rem;">
-                                    <a href="/assect/Journey.pdf" download="Journey_Dr_Snehankita_Majalekar.pdf" aria-label="Download Journey PDF" style="display:inline-flex; align-items:center; gap:0.6rem; padding:0.6rem 0.9rem; background: linear-gradient(90deg,#9333ea,#ec4899); color:#fff; border-radius:8px; font-weight:600; text-decoration:none; box-shadow:0 6px 18px rgba(147,51,234,0.18); transition:transform .12s ease, box-shadow .12s ease;">
+                                    <a href="/assect/Dr._SnehankitaM_Resume.pdf" download="Resume_Dr_Snehankita_Majalekar.pdf" aria-label="Download Journey PDF" style="display:inline-flex; align-items:center; gap:0.6rem; padding:0.6rem 0.9rem; background: linear-gradient(90deg,#9333ea,#ec4899); color:#fff; border-radius:8px; font-weight:600; text-decoration:none; box-shadow:0 6px 18px rgba(147,51,234,0.18); transition:transform .12s ease, box-shadow .12s ease;">
                                         <i data-lucide="download" style="width:1rem; height:1rem;"></i>
-                                        <span style="font-size:0.95rem;">Download Journey (PDF)</span>
+                                        <span style="font-size:0.95rem;">Download Resume (PDF)</span>
                                     </a>
                                 </div>
                             </div>
