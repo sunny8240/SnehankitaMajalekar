@@ -1,4 +1,4 @@
-// All page content as JavaScript template literals
+//In This All page content as JavaScript template literals
 const pages = {
   home: `
         <div class="page active" id="home">
@@ -44,7 +44,7 @@ const pages = {
 
                     <!-- QUICK LINKS -->
                     <div class="quick-links">
-                        <a data-page="#research" class="quick-link-card">
+                        <a href="/#research" data-page="#research" class="quick-link-card">
 
                             <div class="quick-link-gradient" style="background: linear-gradient(to right, #9333ea, #ec4899);"></div>
                             <div class="quick-link-icon">
@@ -53,7 +53,7 @@ const pages = {
                             <span class="quick-link-text">Research</span>
                         </a>
 
-                        <a data-page="#research" class="quick-link-card">
+                        <a href="/#books" data-page="#Publications" class="quick-link-card">
 
                             <div class="quick-link-gradient" style="background: linear-gradient(to right, #3b82f6, #06b6d4);"></div>
                             <div class="quick-link-icon">
@@ -62,7 +62,7 @@ const pages = {
                             <span class="quick-link-text">Publications</span>
                         </a>
 
-                        <a href="#teaching" class="quick-link-card">
+                        <a href="/#teaching" class="quick-link-card">
                             <div class="quick-link-gradient" style="background: linear-gradient(to right, #10b981, #14b8a6);"></div>
                             <div class="quick-link-icon">
                                 <i data-lucide="graduation-cap"></i>
@@ -70,7 +70,7 @@ const pages = {
                             <span class="quick-link-text">Teaching</span>
                         </a>
 
-                        <a href="#contact" class="quick-link-card">
+                        <a href="/#contact" class="quick-link-card">
                             <div class="quick-link-gradient" style="background: linear-gradient(to right, #f97316, #ef4444);"></div>
                             <div class="quick-link-icon">
                                 <i data-lucide="mail"></i>
@@ -86,7 +86,7 @@ const pages = {
                         <div class="photo-blur"></div>
                         <div class="photo-container">
                             <div class="photo-placeholder">
-                                <img src="/assect/profileIMG.png" alt="Dr. Snehankita Majalekar" />
+                                <img src="/assect/profileIMG.jpg" alt="Dr. Snehankita Majalekar" />
                             </div>
                             <div class="photo-overlay">
                                 <p class="photo-overlay-title">Ph.D. | NET Qualified</p>
@@ -606,15 +606,15 @@ const pages = {
                             </div>
                             <div class="grid-3">
                                 ${[
-                                  "Cyber Security & Ethical Hacking|🔒|#9333ea,#ec4899",
-                                  "Digital Forensics|🔍|#3b82f6,#06b6d4",
-                                  "Intrusion Detection Systems|🛡️|#10b981,#14b8a6",
-                                  "MANETs|📡|#f97316,#ef4444",
-                                  "Blockchain & Metaverse|⛓️|#ec4899,#9333ea",
-                                  "Energy Optimization|⚡|#eab308,#f97316",
-                                  "IoT with ML Techniques|🤖|#06b6d4,#3b82f6",
-                                  "6G Communication Systems|📶|#6366f1,#9333ea",
-                                  "Cyber Threat Intelligence|🎯|#ef4444,#ec4899",
+                                  "Cyber Security & Ethical Hacking|<i data-lucide='shield-check'></i>|#9333ea,#ec4899",
+                                  "Digital Forensics|<i data-lucide='search'></i>|#3b82f6,#06b6d4",
+                                  "Intrusion Detection Systems|<i data-lucide='alert-triangle'></i>|#10b981,#14b8a6",
+                                  "MANETs|<i data-lucide='radio-tower'></i>|#f97316,#ef4444",
+                                  "Blockchain & Metaverse|<i data-lucide='link-2'></i>|#ec4899,#9333ea",
+                                  "Energy Optimization|<i data-lucide='zap'></i>|#eab308,#f97316",
+                                  "IoT with ML Techniques|<i data-lucide='cpu'></i>|#06b6d4,#3b82f6",
+                                  "6G Communication Systems|<i data-lucide='wifi'></i>|#6366f1,#9333ea",
+                                  "Cyber Threat Intelligence|<i data-lucide='target'></i>|#ef4444,#ec4899",
                                 ]
                                   .map((item) => {
                                     const [name, icon, colors] =
@@ -626,12 +626,12 @@ const pages = {
                                               .map((c) => c.trim())
                                               .join(", ")}); opacity: 0;"></div>
                                             <div style="position: relative; display: flex; align-items: center; gap: 0.75rem;">
-                                                <div style="font-size: 2.5rem; width: 4rem; height: 4rem; background: linear-gradient(to right, ${colors
+                                                <div style="width: 4rem; height: 4rem; background: linear-gradient(to right, ${colors
                                                   .split(",")
                                                   .map((c) => c.trim())
                                                   .join(
                                                     ", "
-                                                  )}); background-opacity: 0.1; border-radius: 1rem; display: flex; align-items: center; justify-content: center;">${icon}</div>
+                                                  )}); background-opacity: 0.1; border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: #1f2937;">${icon.replace("'></i>", "' style=\"width:1.5rem;height:1.5rem;\"></i>")}</div>
                                                 <p style="color: #1f2937; flex-grow: 1;">${name}</p>
                                             </div>
                                         </div>
@@ -878,57 +878,56 @@ const pages = {
                     </div>
 
                     <!-- Books Grid -->
-                    <div style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr)); gap: 2rem;">
                         <!-- Book Card -->
                         <div style="background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); border-radius: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); overflow: hidden; border: 1px solid #f3e8ff; transition: all 0.3s;">
                             <!-- Book Cover -->
-                            <div style="position: relative; height: 20rem; background: linear-gradient(135deg, #9333ea, #ec4899); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                            <div style="position: relative; height: 14rem; background: linear-gradient(135deg, #9333ea, #ec4899); display: flex; align-items: center; justify-content: center; overflow: hidden;">
                                 <div style="position: absolute; inset: 0; opacity: 0.2;">
                                     <div style="position: absolute; top: 2.5rem; left: 2.5rem; width: 10rem; height: 10rem; background: white; border-radius: 9999px; filter: blur(64px);"></div>
                                     <div style="position: absolute; bottom: 2.5rem; right: 2.5rem; width: 10rem; height: 10rem; background: white; border-radius: 9999px; filter: blur(64px);"></div>
                                 </div>
-                                <div style="position: relative; text-align: center; padding: 2rem; color: white;">
-                                    <i data-lucide="book-open" style="width: 5rem; height: 5rem; margin: 0 auto 1.5rem; display: block;"></i>
-                                    <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">fOcuS – Operating System</h3>
-                                    <p style="color: rgba(255, 255, 255, 0.8);">Academic Textbook</p>
+                                <div style="position: relative; text-align: center; padding: 1.5rem; color: white;">
+                                    <i data-lucide="book-open" style="width: 3rem; height: 3rem; margin: 0 auto 0.75rem; display: block;"></i>
+                                    <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">fOcuS – Operating System</h3>
+                                    <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem;">Academic Textbook</p>
                                 </div>
                             </div>
 
                             <!-- Book Details -->
-                            <div style="padding: 1.5rem;">
-                                <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
-                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
-                                        <div style="width: 2.5rem; height: 2.5rem; background: linear-gradient(to right, #eff6ff, #ecfeff); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center;">
-                                            <i data-lucide="calendar" style="color: #3b82f6; width: 1.25rem; height: 1.25rem;"></i>
+                            <div style="padding: 1.25rem;">
+                                <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.25rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <div style="width: 1.75rem; height: 1.75rem; background: linear-gradient(to right, #eff6ff, #ecfeff); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center;">
+                                            <i data-lucide="calendar" style="color: #3b82f6; width: 0.875rem; height: 0.875rem;"></i>
                                         </div>
                                         <div>
-                                            <p style="font-size: 0.875rem; color: #6b7280;">Publication Year</p>
-                                            <p style="color: #1f2937; font-weight: 600;">2021</p>
+                                            <p style="font-size: 0.75rem; color: #6b7280;">Publication Year</p>
+                                            <p style="color: #1f2937; font-weight: 600; font-size: 0.875rem;">2021</p>
                                         </div>
                                     </div>
-                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
-                                        <div style="width: 2.5rem; height: 2.5rem; background: linear-gradient(to right, #faf5ff, #fce7f3); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center;">
-                                            <i data-lucide="hash" style="color: #9333ea; width: 1.25rem; height: 1.25rem;"></i>
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <div style="width: 1.75rem; height: 1.75rem; background: linear-gradient(to right, #faf5ff, #fce7f3); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center;">
+                                            <i data-lucide="hash" style="color: #9333ea; width: 0.875rem; height: 0.875rem;"></i>
                                         </div>
                                         <div>
-                                            <p style="font-size: 0.875rem; color: #6b7280;">ISBN</p>
-                                            <p style="color: #1f2937; font-weight: 600;">978-93-5457-583-9</p>
+                                            <p style="font-size: 0.75rem; color: #6b7280;">ISBN</p>
+                                            <p style="color: #1f2937; font-weight: 600; font-size: 0.875rem;">978-93-5457-583-9</p>
                                         </div>
                                     </div>
                                 </div>
-                                <p style="color: #374151; line-height: 1.75;">
-                                    A comprehensive guide to Operating Systems, designed for students and professionals. This book covers fundamental concepts, 
-                                    practical implementations, and advanced topics in operating system design.
+                                <p style="color: #374151; line-height: 1.6; font-size: 0.875rem;">
+                                    A comprehensive guide to Operating Systems, designed for students and professionals. This book covers fundamental concepts, practical implementations, and advanced topics in operating system design.
                                 </p>
                             </div>
                         </div>
 
                         <!-- Coming Soon Card -->
-                        <div style="background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(10px); border-radius: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); overflow: hidden; border: 2px dashed #e9d5ff; display: flex; align-items: center; justify-content: center; padding: 3rem;">
+                        <div style="background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(10px); border-radius: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); overflow: hidden; border: 2px dashed #e9d5ff; display: flex; align-items: center; justify-content: center; padding: 2rem;">
                             <div style="text-align: center;">
-                                <i data-lucide="book-open" style="color: #d8b4fe; width: 4rem; height: 4rem; margin: 0 auto 1rem; display: block;"></i>
-                                <h3 style="font-size: 1.25rem; color: #6b7280; margin-bottom: 0.5rem;">More Books Coming Soon</h3>
-                                <p style="color: #9ca3af;">Working on new publications</p>
+                                <i data-lucide="book-open" style="color: #d8b4fe; width: 2.5rem; height: 2.5rem; margin: 0 auto 0.75rem; display: block;"></i>
+                                <h3 style="font-size: 1rem; color: #6b7280; margin-bottom: 0.5rem;">More Books Coming Soon</h3>
+                                <p style="color: #9ca3af; font-size: 0.875rem;">Working on new publications</p>
                             </div>
                         </div>
                     </div>
@@ -970,20 +969,20 @@ const pages = {
                             </div>
                             <div class="grid-4">
                                 ${[
-                                  "C Programming|💻|#9333ea,#ec4899",
-                                  "Data Structures|🌳|#3b82f6,#06b6d4",
-                                  "Operating Systems|⚙️|#10b981,#14b8a6",
-                                  "Computer Networks|🌐|#f97316,#ef4444",
-                                  "Software Engineering|🏗️|#ec4899,#9333ea",
-                                  "Assembly Language|⚡|#eab308,#f97316",
-                                  "VAPT|🔒|#ef4444,#ec4899",
-                                  "Digital Forensics|🔍|#06b6d4,#3b82f6",
-                                  "Ethical Hacking|🎯|#6366f1,#9333ea",
-                                  "Cyber Security Fundamentals|🛡️|#10b981,#06b6d4",
-                                  "Digital Marketing|📱|#ec4899,#ef4444",
-                                  "Data Science|📊|#9333ea,#3b82f6",
-                                  "R Programming|📈|#3b82f6,#10b981",
-                                  "Research & Projects|🔬|#f97316,#ec4899",
+                                  "C Programming|<i data-lucide='code'></i>|#9333ea,#ec4899",
+                                  "Data Structures|<i data-lucide='list-tree'></i>|#3b82f6,#06b6d4",
+                                  "Operating Systems|<i data-lucide='settings'></i>|#10b981,#14b8a6",
+                                  "Computer Networks|<i data-lucide='network'></i>|#f97316,#ef4444",
+                                  "Software Engineering|<i data-lucide='hard-hat'></i>|#ec4899,#9333ea",
+                                  "Assembly Language|<i data-lucide='zap'></i>|#eab308,#f97316",
+                                  "VAPT|<i data-lucide='shield-alert'></i>|#ef4444,#ec4899",
+                                  "Digital Forensics|<i data-lucide='search'></i>|#06b6d4,#3b82f6",
+                                  "Ethical Hacking|<i data-lucide='target'></i>|#6366f1,#9333ea",
+                                  "Cyber Security Fundamentals|<i data-lucide='shield-check'></i>|#10b981,#06b6d4",
+                                  "Digital Marketing|<i data-lucide='smartphone'></i>|#ec4899,#ef4444",
+                                  "Data Science|<i data-lucide='bar-chart-3'></i>|#9333ea,#3b82f6",
+                                  "R Programming|<i data-lucide='trending-up'></i>|#3b82f6,#10b981",
+                                  "Research & Projects|<i data-lucide='beaker'></i>|#f97316,#ec4899",
                                 ]
                                   .map((item) => {
                                     const [name, icon, colors] =
@@ -997,7 +996,7 @@ const pages = {
                                                 ", "
                                               )}); border-bottom-left-radius: 9999px; opacity: 0.1;"></div>
                                             <div style="position: relative; display: flex; align-items: center; gap: 0.75rem;">
-                                                <div style="font-size: 1.875rem;">${icon}</div>
+                                                <div style="color: #1f2937; display: flex; align-items: center; justify-content: center;">${icon.replace("'></i>", "' style=\"width:1.25rem;height:1.25rem;\"></i>")}</div>
                                                 <p style="color: #1f2937; font-size: 0.875rem;">${name}</p>
                                             </div>
                                         </div>
@@ -1024,29 +1023,29 @@ const pages = {
                                   {
                                     title: "40-hour Web Marketing Course",
                                     type: "Course",
-                                    icon: "📚",
+                                    icon: "<i data-lucide='book-open'></i>",
                                   },
                                   {
                                     title: "Ethical Hacking Tools",
                                     type: "Guest Lecture",
-                                    icon: "🎤",
+                                    icon: "<i data-lucide='mic-2'></i>",
                                   },
                                   {
                                     title: "Cyber Security",
                                     type: "Guest Lecture",
-                                    icon: "🎤",
+                                    icon: "<i data-lucide='mic-2'></i>",
                                   },
                                   {
                                     title: "VAPT Workshop",
                                     type: "Workshop",
-                                    icon: "🛠️",
+                                    icon: "<i data-lucide='wrench'></i>",
                                   },
                                 ]
                                   .map(
                                     (lecture) => `
                                     <div style="background: linear-gradient(to right, #eff6ff, #ecfeff); padding: 1.25rem; border-radius: 1rem; border: 1px solid #bfdbfe; transition: all 0.3s;">
                                         <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                                            <div style="font-size: 1.875rem;">${lecture.icon}</div>
+                                            <div style="color: #3b82f6; display: flex; align-items: center; justify-content: center;">${lecture.icon.replace('</i>', ' style="width:1.5rem;height:1.5rem;"></i>')}</div>
                                             <div>
                                                 <h3 style="color: #1f2937; margin-bottom: 0.25rem; font-weight: 600;">${lecture.title}</h3>
                                                 <p style="font-size: 0.875rem; color: #3b82f6;">${lecture.type}</p>
@@ -1171,54 +1170,54 @@ const pages = {
                                   {
                                     name: "Cyber Warrior",
                                     issuer: "Hackingflix Academy",
-                                    icon: "🏆",
+                                    icon: "<i data-lucide='award'></i>",
                                   },
                                   {
                                     name: "Digital Marketing Certified",
                                     issuer: "Industry Standard",
-                                    icon: "📱",
+                                    icon: "<i data-lucide='smartphone'></i>",
                                   },
                                   {
                                     name: "Computer System Security & MANETs",
                                     issuer: "IIT Kanpur",
-                                    icon: "🎓",
+                                    icon: "<i data-lucide='graduation-cap'></i>",
                                   },
                                   {
                                     name: "5G Technology",
                                     issuer: "Industry Certification",
-                                    icon: "📡",
+                                    icon: "<i data-lucide='radio-tower'></i>",
                                   },
                                   {
                                     name: "Penetration Testing",
                                     issuer: "Professional",
-                                    icon: "🔒",
+                                    icon: "<i data-lucide='shield-alert'></i>",
                                   },
                                   {
                                     name: "BurpSuite Essentials",
                                     issuer: "PortSwigger",
-                                    icon: "🛠️",
+                                    icon: "<i data-lucide='wrench'></i>",
                                   },
                                   {
                                     name: "Metasploit PenTesting",
                                     issuer: "Rapid7",
-                                    icon: "⚔️",
+                                    icon: "<i data-lucide='swords'></i>",
                                   },
                                   {
                                     name: "Literature Search",
                                     issuer: "SPPU",
-                                    icon: "📚",
+                                    icon: "<i data-lucide='book-marked'></i>",
                                   },
                                   {
                                     name: "Microsoft Innovative Educator",
                                     issuer: "Microsoft",
-                                    icon: "💡",
+                                    icon: "<i data-lucide='lightbulb'></i>",
                                   },
                                 ]
                                   .map(
                                     (cert) => `
                                     <div style="background: linear-gradient(to right, #fff7ed, #fee2e2); padding: 1.25rem; border-radius: 1rem; border: 1px solid #fed7aa; transition: all 0.3s;">
                                         <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                            <div style="font-size: 1.5rem;">${cert.icon}</div>
+                                            <div style="color: #ea580c; display: flex; align-items: center; justify-content: center;">${cert.icon.replace('</i>', ' style="width:1.5rem;height:1.5rem;"></i>')}</div>
                                             <div>
                                                 <h3 style="color: #1f2937; margin-bottom: 0.25rem; font-weight: 600;">${cert.name}</h3>
                                                 <p style="font-size: 0.875rem; color: #6b7280;">${cert.issuer}</p>
@@ -1268,10 +1267,10 @@ const pages = {
                             </div>
                             <div class="grid-2">
                                 ${[
-                                  "Installed AWS Cloud Lab for Cyber Security|☁️|#9333ea,#ec4899",
-                                  "NAAC Files Management|📁|#3b82f6,#06b6d4",
-                                  "Admission Cell Member|🎓|#10b981,#14b8a6",
-                                  "College Website SEO (5+ years)|🌐|#f97316,#ef4444",
+                                  "Installed AWS Cloud Lab for Cyber Security|<i data-lucide='cloud'></i>|#9333ea,#ec4899",
+                                  "NAAC Files Management|<i data-lucide='folder'></i>|#3b82f6,#06b6d4",
+                                  "Admission Cell Member|<i data-lucide='graduation-cap'></i>|#10b981,#14b8a6",
+                                  "College Website SEO (5+ years)|<i data-lucide='globe'></i>|#f97316,#ef4444",
                                 ]
                                   .map((item) => {
                                     const [title, icon, colors] =
@@ -1285,7 +1284,7 @@ const pages = {
                                                 ", "
                                               )}); border-bottom-left-radius: 9999px; opacity: 0.1;"></div>
                                             <div style="position: relative; display: flex; align-items: center; gap: 1rem;">
-                                                <div style="font-size: 2.5rem;">${icon}</div>
+                                                <div style="color: #1f2937; display: flex; align-items: center; justify-content: center;">${icon.replace('</i>', ' style="width:1.75rem;height:1.75rem;"></i>')}</div>
                                                 <p style="color: #1f2937; font-weight: 600;">${title}</p>
                                             </div>
                                         </div>
@@ -1309,9 +1308,9 @@ const pages = {
                             </div>
                             <div class="grid-3">
                                 ${[
-                                  "Foreign Language Programs|🌍|#9333ea,#ec4899",
-                                  "Cryptocurrency Training|₿|#3b82f6,#06b6d4",
-                                  "Skill Development Programs|🎯|#10b981,#14b8a6",
+                                  "Foreign Language Programs|<i data-lucide='globe'></i>|#9333ea,#ec4899",
+                                  "Cryptocurrency Training|<i data-lucide='dollar-sign'></i>|#3b82f6,#06b6d4",
+                                  "Skill Development Programs|<i data-lucide='target'></i>|#10b981,#14b8a6",
                                 ]
                                   .map((item) => {
                                     const [name, icon, colors] =
@@ -1323,7 +1322,7 @@ const pages = {
                                               .map((c) => c.trim())
                                               .join(", ")}); opacity: 0;"></div>
                                             <div style="position: relative; text-align: center;">
-                                                <div style="font-size: 3rem; margin-bottom: 0.75rem;">${icon}</div>
+                                                <div style="color: #1f2937; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: center;">${icon.replace('<i>', ' style="width:2rem;height:2rem;"></i>')}</div>
                                                 <p style="color: #1f2937; font-weight: 600;">${name}</p>
                                             </div>
                                         </div>
@@ -1351,42 +1350,42 @@ const pages = {
                                     title: "Cyber Security Club – CREST",
                                     description:
                                       "Initiated and helped structure PCU's official Cyber Security Club, focusing on hands-on learning, collaboration, innovation, and cybersecurity culture.",
-                                    icon: "🔐",
+                                    icon: "<i data-lucide='lock'></i>",
                                     color: "#9333ea,#ec4899",
                                   },
                                   {
                                     title: "Mastercard VAPT Workshop",
                                     description:
                                       "Organized an impactful industry-level workshop with Mastercard on VAPT & Mobile Security Pentesting, enhancing student awareness of real-world security methodologies.",
-                                    icon: "🛡️",
+                                    icon: "<i data-lucide='shield-check'></i>",
                                     color: "#3b82f6,#06b6d4",
                                   },
                                   {
                                     title: "Research Publications",
                                     description:
                                       "Published multiple research papers in international journals and conferences on cybersecurity, MANETs, and emerging technologies.",
-                                    icon: "📚",
+                                    icon: "<i data-lucide='book-open'></i>",
                                     color: "#10b981,#14b8a6",
                                   },
                                   {
                                     title: "Patent Holder",
                                     description:
                                       "Received patents for innovations in Wireless Sensor Networks and Mobile Payment Systems.",
-                                    icon: "🏆",
+                                    icon: "<i data-lucide='award'></i>",
                                     color: "#f97316,#ef4444",
                                   },
                                   {
                                     title: "AWS Cloud Lab Setup",
                                     description:
                                       "Successfully established and configured AWS Cloud Lab infrastructure for hands-on cybersecurity training and practical learning.",
-                                    icon: "☁️",
+                                    icon: "<i data-lucide='cloud'></i>",
                                     color: "#ec4899,#9333ea",
                                   },
                                   {
                                     title: "Student Mentorship",
                                     description:
                                       "Guided 100+ students through research projects, career guidance, and technical skill development in cybersecurity domain.",
-                                    icon: "👥",
+                                    icon: "<i data-lucide='users'></i>",
                                     color: "#06b6d4,#3b82f6",
                                   },
                                 ]
@@ -1406,8 +1405,8 @@ const pages = {
                                                   .map((c) => c.trim())
                                                   .join(
                                                     ", "
-                                                  )}); border-radius: 1rem; display: flex; align-items: center; justify-content: center; font-size: 1.875rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
-                                                    ${achievement.icon}
+                                                  )}); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
+                                                    ${achievement.icon.replace('</i>', ' style="width:2rem;height:2rem;"></i>')}
                                                 </div>
                                                 <div style="flex-grow: 1;">
                                                     <h3 style="font-size: 1.25rem; color: #1f2937; margin-bottom: 0.5rem; font-weight: 600;">${
@@ -1428,31 +1427,26 @@ const pages = {
                     </div>
 
                     <!-- Impact Summary -->
-                    <div>
-                        <div style="background: linear-gradient(to right, #9333ea, #ec4899, #3b82f6); border-radius: 1.5rem; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); padding: 3rem; color: white;">
-                            <div style="text-align: center; margin-bottom: 2rem;">
-                                <i data-lucide="star" style="width: 3rem; height: 3rem; margin: 0 auto 1rem; display: block;"></i>
-                                <h2 style="font-size: 1.875rem; margin-bottom: 1rem;">Impact Summary</h2>
-                                <p style="color: #e9d5ff; font-size: 1.125rem; max-width: 32rem; margin: 0 auto; line-height: 1.75;">
-                                    Through dedicated service and innovative initiatives, creating lasting impact in education, 
-                                    research, and student development.
+                    <div style="margin-top: 2rem;">
+                        <div style="background: linear-gradient(to right, #9333ea, #ec4899, #3b82f6); border-radius: 1.5rem; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); padding: 2rem; color: white;">
+                            <div style="text-align: center; margin-bottom: 1.5rem;">
+                                <h2 style="font-size: 1.5rem; margin-bottom: 0.75rem;">Impact Summary</h2>
+                                <p style="color: #e9d5ff; font-size: 1rem; max-width: 32rem; margin: 0 auto; line-height: 1.6;">
+                                    Through dedicated service and innovative initiatives, creating lasting impact in education, research, and student development.
                                 </p>
                             </div>
-                            <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem;">
-                                <div style="text-align: center; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
-                                    <i data-lucide="target" style="width: 2rem; height: 2rem; margin: 0 auto 0.75rem; display: block;"></i>
-                                    <div style="font-size: 1.875rem; margin-bottom: 0.5rem;">15+</div>
-                                    <p style="color: #e9d5ff;">Years of Experience</p>
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem;">
+                                <div style="text-align: center; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 1rem; padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.2);">
+                                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">15+</div>
+                                    <p style="color: #e9d5ff; font-size: 0.875rem;">Years of Experience</p>
                                 </div>
-                                <div style="text-align: center; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
-                                    <i data-lucide="users" style="width: 2rem; height: 2rem; margin: 0 auto 0.75rem; display: block;"></i>
-                                    <div style="font-size: 1.875rem; margin-bottom: 0.5rem;">100+</div>
-                                    <p style="color: #e9d5ff;">Students Mentored</p>
+                                <div style="text-align: center; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 1rem; padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.2);">
+                                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">100+</div>
+                                    <p style="color: #e9d5ff; font-size: 0.875rem;">Students Mentored</p>
                                 </div>
-                                <div style="text-align: center; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
-                                    <i data-lucide="award" style="width: 2rem; height: 2rem; margin: 0 auto 0.75rem; display: block;"></i>
-                                    <div style="font-size: 1.875rem; margin-bottom: 0.5rem;">10+</div>
-                                    <p style="color: #e9d5ff;">Major Initiatives</p>
+                                <div style="text-align: center; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 1rem; padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.2);">
+                                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">10+</div>
+                                    <p style="color: #e9d5ff; font-size: 0.875rem;">Major Initiatives</p>
                                 </div>
                             </div>
                         </div>
@@ -1482,33 +1476,21 @@ const pages = {
                         </p>
                     </div>
 
-                    <!-- Major Events -->
+                        <!-- Major Events -->
                     <div style="display: flex; flex-direction: column; gap: 2rem; margin-bottom: 3rem;">
                         <!-- Event 1 -->
-                        <div class="card" style="padding: 0; overflow: hidden;">
-                            <div style="display: grid; grid-template-columns: 1fr;">
-                                <!-- Event Image Section -->
-                                <div style="position: relative; height: 20rem; background: linear-gradient(135deg, #9333ea, #ec4899); display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                                    <div style="position: absolute; inset: 0; opacity: 0.2;">
-                                        <div class="animate-float" style="position: absolute; top: 2.5rem; left: 2.5rem; width: 10rem; height: 10rem; background: white; border-radius: 9999px; filter: blur(64px);"></div>
-                                        <div class="animate-float" style="position: absolute; bottom: 2.5rem; right: 2.5rem; width: 10rem; height: 10rem; background: white; border-radius: 9999px; filter: blur(64px); animation-delay: 2s;"></div>
-                                    </div>
-                                    <div style="position: relative; text-align: center; color: white; padding: 2rem;">
-                                        <div style="font-size: 5rem; margin-bottom: 1rem;">🔐</div>
-                                        <div style="display: inline-block; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); padding: 0.5rem 1rem; border-radius: 9999px;">
-                                            <p style="color: white;">Club Launch</p>
-                                        </div>
-                                    </div>
+                        <div class="card event-major" style="padding: 0; overflow: hidden;">
+                            <div class="event-major-grid">
+                                <div class="event-media">
+                                    <img src="/assect/club.jpg" alt="CREST Club Launch" />
                                 </div>
-
-                                <!-- Event Details Section -->
-                                <div style="padding: 2.5rem;">
+                                <div class="event-details">
                                     <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
-                                        <h2 style="font-size: 1.5rem; color: #1f2937; flex-grow: 1; font-weight: 700;">Launch of Cyber Security Club – CREST</h2>
-                                        <span style="background: linear-gradient(to right, #faf5ff, #fce7f3); color: #7e22ce; padding: 0.5rem 1rem; border-radius: 9999px; white-space: nowrap;">2024</span>
+                                        <h2 class="event-title">Launch of Cyber Security Club – CREST</h2>
+                                        <span class="event-year">2025</span>
                                     </div>
 
-                                    <p style="color: #374151; font-size: 1.125rem; margin-bottom: 1.5rem; line-height: 1.75;">
+                                    <p class="event-desc">
                                         Initiated and helped structure PCU's official Cyber Security Club. The club focuses on hands-on learning, collaboration, innovation, and building a strong cybersecurity culture among students.
                                     </p>
 
@@ -1517,7 +1499,7 @@ const pages = {
                                             <i data-lucide="zap" style="color: #9333ea; width: 1.25rem; height: 1.25rem;"></i>
                                             Key Highlights
                                         </h3>
-                                        <div style="display: grid; grid-template-columns: 1fr; gap: 0.75rem;">
+                                        <div class="highlights-grid">
                                             ${[
                                               "Hands-on learning environment",
                                               "Student collaboration platform",
@@ -1541,30 +1523,18 @@ const pages = {
                         </div>
 
                         <!-- Event 2 -->
-                        <div class="card" style="padding: 0; overflow: hidden;">
-                            <div style="display: grid; grid-template-columns: 1fr;">
-                                <!-- Event Image Section -->
-                                <div style="position: relative; height: 20rem; background: linear-gradient(135deg, #3b82f6, #06b6d4); display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                                    <div style="position: absolute; inset: 0; opacity: 0.2;">
-                                        <div class="animate-float" style="position: absolute; top: 2.5rem; left: 2.5rem; width: 10rem; height: 10rem; background: white; border-radius: 9999px; filter: blur(64px);"></div>
-                                        <div class="animate-float" style="position: absolute; bottom: 2.5rem; right: 2.5rem; width: 10rem; height: 10rem; background: white; border-radius: 9999px; filter: blur(64px); animation-delay: 2s;"></div>
-                                    </div>
-                                    <div style="position: relative; text-align: center; color: white; padding: 2rem;">
-                                        <div style="font-size: 5rem; margin-bottom: 1rem;">🛡️</div>
-                                        <div style="display: inline-block; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); padding: 0.5rem 1rem; border-radius: 9999px;">
-                                            <p style="color: white;">Industry Workshop</p>
-                                        </div>
-                                    </div>
+                        <div class="card event-major" style="padding: 0; overflow: hidden;">
+                            <div class="event-major-grid">
+                                <div class="event-media">
+                                    <img src="/assect/workshop.jpg" alt="Mastercard VAPT Workshop" />
                                 </div>
-
-                                <!-- Event Details Section -->
-                                <div style="padding: 2.5rem;">
+                                <div class="event-details">
                                     <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
-                                        <h2 style="font-size: 1.5rem; color: #1f2937; flex-grow: 1; font-weight: 700;">Mastercard VAPT & Mobile Security Workshop</h2>
-                                        <span style="background: linear-gradient(to right, #faf5ff, #fce7f3); color: #7e22ce; padding: 0.5rem 1rem; border-radius: 9999px; white-space: nowrap;">2024</span>
+                                        <h2 class="event-title">Mastercard VAPT & Mobile Security Workshop</h2>
+                                        <span class="event-year">2025</span>
                                     </div>
 
-                                    <p style="color: #374151; font-size: 1.125rem; margin-bottom: 1.5rem; line-height: 1.75;">
+                                    <p class="event-desc">
                                         Organized an impactful industry-level workshop in collaboration with Mastercard and Shyamkumar Nair Sir. The workshop provided deep insights into VAPT (Vulnerability Assessment & Penetration Testing) and Mobile Security Pentesting.
                                     </p>
 
@@ -1573,7 +1543,7 @@ const pages = {
                                             <i data-lucide="zap" style="color: #9333ea; width: 1.25rem; height: 1.25rem;"></i>
                                             Key Highlights
                                         </h3>
-                                        <div style="display: grid; grid-template-columns: 1fr; gap: 0.75rem;">
+                                        <div class="highlights-grid">
                                             ${[
                                               "Industry collaboration with Mastercard",
                                               "VAPT methodologies",
@@ -1609,64 +1579,52 @@ const pages = {
                             </h2>
                         </div>
                         
-                        <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 2rem;">
-                            ${[
-                              {
-                                title: "CREST Club Launch",
-                                color: "#9333ea,#ec4899",
-                                icon: "🔐",
-                              },
-                              {
-                                title: "VAPT Workshop",
-                                color: "#3b82f6,#06b6d4",
-                                icon: "🛡️",
-                              },
-                              {
-                                title: "Student Training",
-                                color: "#10b981,#14b8a6",
-                                icon: "👨‍🎓",
-                              },
-                              {
-                                title: "Industry Collaboration",
-                                color: "#f97316,#ef4444",
-                                icon: "🤝",
-                              },
-                              {
-                                title: "Technical Seminar",
-                                color: "#ec4899,#9333ea",
-                                icon: "💡",
-                              },
-                              {
-                                title: "Research Presentation",
-                                color: "#06b6d4,#3b82f6",
-                                icon: "📊",
-                              },
-                            ]
-                              .map(
-                                (item) => `
-                                <div style="position: relative; overflow: hidden; border-radius: 1rem; height: 16rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); transition: all 0.3s;">
-                                    <div style="position: absolute; inset: 0; background: linear-gradient(135deg, ${item.color
-                                      .split(",")
-                                      .map((c) => c.trim())
-                                      .join(", ")});"></div>
-                                    <div style="position: absolute; inset: 0; opacity: 0.2;">
-                                        <div class="animate-float" style="position: absolute; top: 1.25rem; left: 1.25rem; width: 8rem; height: 8rem; background: white; border-radius: 9999px; filter: blur(48px);"></div>
-                                        <div class="animate-float" style="position: absolute; bottom: 1.25rem; right: 1.25rem; width: 8rem; height: 8rem; background: white; border-radius: 9999px; filter: blur(48px); animation-delay: 1s;"></div>
-                                    </div>
-                                    <div style="position: relative; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; padding: 1.5rem;">
-                                        <div style="font-size: 3.75rem; margin-bottom: 1rem; transition: transform 0.3s;">${
-                                          item.icon
-                                        }</div>
-                                        <h3 style="font-size: 1.25rem;">${
-                                          item.title
-                                        }</h3>
-                                        <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem; margin-top: 0.5rem;">Photo Placeholder</p>
-                                    </div>
-                                </div>
-                            `
-                              )
-                              .join("")}
-                        </div>
+                                                <div class="event-gallery-grid">
+                                                        ${[
+                                                            {
+                                                                title: "CREST Club Launch",
+                                                                color: "#9333ea,#ec4899",
+                                                                image: "/assect/club.jpg",
+                                                            },
+                                                            {
+                                                                title: "VAPT Workshop",
+                                                                color: "#3b82f6,#06b6d4",
+                                                                image: "/assect/workshop.jpg",
+                                                            },
+                                                            {
+                                                                title: "Student Training",
+                                                                color: "#10b981,#14b8a6",
+                                                                image: "/assect/student-training.jpg",
+                                                            },
+                                                            {
+                                                                title: "MasterCard Seminar",
+                                                                color: "#f97316,#ef4444",
+                                                                image: "/assect/industry-collab.jpg",
+                                                            },
+                                                            {
+                                                                title: "Mastercard Collaboration ",
+                                                                color: "#ec4899,#9333ea",
+                                                                image: "/assect/tech-seminar.jpg",
+                                                            },
+                                                            {
+                                                                title: "CREST Club",
+                                                                color: "#06b6d4,#3b82f6",
+                                                                image: "/assect/c.jpg",
+                                                            },
+                                                        ]
+                                                            .map(
+                                                                (item) => `
+                                                                <div class="event-card">
+                                                                        <img class="event-img" src="${item.image}" alt="${item.title}" />
+                                                                        <div class="event-overlay">
+                                                                                <h3>${item.title}</h3>
+                                                                                <p>Photo from event gallery</p>
+                                                                        </div>
+                                                                </div>
+                                                        `
+                                                            )
+                                                            .join("")}
+                                                </div>
 
                         <div style="margin-top: 2rem; background: linear-gradient(to right, #faf5ff, #fce7f3); border-radius: 1rem; padding: 1.5rem; border: 1px solid #e9d5ff;">
                             <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
@@ -1683,30 +1641,25 @@ const pages = {
                     </div>
 
                     <!-- Impact Section -->
-                    <div style="margin-top: 3rem;">
-                        <div style="background: linear-gradient(to right, #9333ea, #ec4899, #3b82f6); border-radius: 1.5rem; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); padding: 3rem; color: white;">
-                            <div style="text-align: center; margin-bottom: 2rem;">
-                                <i data-lucide="target" style="width: 3rem; height: 3rem; margin: 0 auto 1rem; display: block;"></i>
-                                <h2 style="font-size: 1.875rem; margin-bottom: 1rem;">Event Impact</h2>
-                                <p style="color: #e9d5ff; font-size: 1.125rem; max-width: 32rem; margin: 0 auto; line-height: 1.75;">
-                                    Our events and initiatives have reached hundreds of students, providing them with 
-                                    industry insights and practical cybersecurity skills.
+                    <div style="margin-top: 2rem;">
+                        <div style="background: linear-gradient(to right, #9333ea, #ec4899, #3b82f6); border-radius: 1.5rem; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); padding: 2rem; color: white;">
+                            <div style="text-align: center; margin-bottom: 1.5rem;">
+                                <h2 style="font-size: 1.5rem; margin-bottom: 0.75rem;">Event Impact</h2>
+                                <p style="color: #e9d5ff; font-size: 1rem; max-width: 32rem; margin: 0 auto; line-height: 1.6;">
+                                    Our events and initiatives have reached hundreds of students, providing them with industry insights and practical cybersecurity skills.
                                 </p>
                             </div>
-                            <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
-                                <div style="text-align: center; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
-                                    <i data-lucide="users" style="width: 2rem; height: 2rem; margin: 0 auto 0.75rem; display: block;"></i>
-                                    <div style="font-size: 1.875rem; margin-bottom: 0.5rem;">200+</div>
-                                    <p style="color: #e9d5ff;">Students Participated</p>
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                                <div style="text-align: center; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 1rem; padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.2);">
+                                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">200+</div>
+                                    <p style="color: #e9d5ff; font-size: 0.875rem;">Students Participated</p>
                                 </div>
-                                <div style="text-align: center; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
-                                    <i data-lucide="shield" style="width: 2rem; height: 2rem; margin: 0 auto 0.75rem; display: block;"></i>
-                                    <div style="font-size: 1.875rem; margin-bottom: 0.5rem;">5+</div>
-                                    <p style="color: #e9d5ff;">Major Events</p>
+                                <div style="text-align: center; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 1rem; padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.2);">
+                                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">5+</div>
+                                    <p style="color: #e9d5ff; font-size: 0.875rem;">Major Events</p>
                                 </div>
-                                <div style="text-align: center; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
-                                    <i data-lucide="award" style="width: 2rem; height: 2rem; margin: 0 auto 0.75rem; display: block;"></i>
-                                    <div style="font-size: 1.875rem; margin-bottom: 0.5rem;">100%</div>
+                                <div style="text-align: center; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 1rem; padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.2);">
+                                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">100%</div>
                                     <p style="color: #e9d5ff;">Positive Feedback</p>
                                 </div>
                             </div>
@@ -1808,58 +1761,32 @@ const pages = {
                                     Academic & Social Profiles
                                 </h2>
                                 
-                                <div class="social-links-grid">
-                                    ${[
-                                      {
-                                        name: "LinkedIn",
-                                        url: "https://www.linkedin.com/in/dr-snehankita-majalekar-a41b31381/",
-                                        color: "#3b82f6,#2563eb",
-                                      },
-                                      {
-                                        name: "Vidwan",
-                                        url: "https://vidwan.inflibnet.ac.in/profile/659540",
-                                        color: "#9333ea,#7e22ce",
-                                      },
-                                      {
-                                        name: "ORCID",
-                                        url: "https://orcid.org/0009-0007-2748-9853",
-                                        color: "#10b981,#059669",
-                                      },
-                                      {
-                                        name: "Google Scholar",
-                                        url: "https://scholar.google.com/citations?user=BCErzFQAAAAJ",
-                                        color: "#ef4444,#dc2626",
-                                      },
-                                      {
-                                        name: "ResearchGate",
-                                        url: "https://www.researchgate.net/profile/Snehankita-Majalekar",
-                                        color: "#06b6d4,#0891b2",
-                                      },
-                                    ]
-                                      .map(
-                                        (link) => `
-                                        <a href="${
-                                          link.url
-                                        }" target="_blank" rel="noopener noreferrer" class="social-link">
-                                            <div class="social-link-content">
-                                                <div class="social-link-icon" style="background: linear-gradient(to right, ${link.color
-                                                  .split(",")
-                                                  .map((c) => c.trim())
-                                                  .join(", ")});">
-                                                    <i data-lucide="external-link"></i>
-                                                </div>
-                                                <span style="color: #1f2937; font-weight: 600;">${
-                                                  link.name
-                                                }</span>
-                                            </div>
-                                            <div class="social-link-arrow">
-                                                <i data-lucide="external-link"></i>
-                                            </div>
-                                        </a>
-                                    `
-                                      )
-                                      .join("")}
-                                </div>
+                                                                <div class="social-links-grid">
+                                                                    <a href="https://www.linkedin.com/in/dr-snehankita-majalekar-a41b31381/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn" style="background: linear-gradient(to right, #3b82f6, #2563eb);">
+                                                                        <i data-lucide="linkedin"></i>
+                                                                        <span class="sr-only">LinkedIn</span>
+                                                                    </a>
+
+                                                                    <a href="https://scholar.google.com/citations?user=BCErzFQAAAAJ" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Google Scholar" style="background: linear-gradient(to right, #ef4444, #dc2626);">
+                                                                        <i data-lucide="graduation-cap"></i>
+                                                                        <span class="sr-only">Google Scholar</span>
+                                                                    </a>
+
+                                                                    <a href="https://orcid.org/0009-0007-2748-9853" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="ORCID" style="background: linear-gradient(to right, #10b981, #059669);">
+                                                                        <i data-lucide="link-2"></i>
+                                                                        <span class="sr-only">ORCID</span>
+                                                                    </a>
+
+                                                                    <a href="https://www.researchgate.net/profile/Snehankita-Majalekar" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="ResearchGate" style="background: linear-gradient(to right, #06b6d4, #0891b2);">
+                                                                        <i data-lucide="users"></i>
+                                                                        <span class="sr-only">ResearchGate</span>
+                                                                    </a>
+
+                                                                    <a href="https://vidwan.inflibnet.ac.in/profile/659540" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Vidwan" style="background: linear-gradient(to right, #9333ea, #7e22ce);">
+                                                                        <i data-lucide="globe"></i>
+                                                                        <span class="sr-only">Vidwan</span>
+                                                                    </a>
+                                                                </div>
 
                                 <div style="margin-top: 1.5rem; padding: 1rem; background: linear-gradient(to right, #faf5ff, #fce7f3); border-radius: 1rem; border: 1px solid #e9d5ff;">
                                     <p style="color: #374151; display: flex; align-items: center; gap: 0.5rem;">
@@ -1876,17 +1803,17 @@ const pages = {
                                 Send a Message
                             </h2>
                             
-                            <form onsubmit="handleFormSubmit(event)" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <form id="contactForm" style="display: flex; flex-direction: column; gap: 1.5rem;">
                                 <div class="form-group">
                                     <label for="name" class="form-label">Your Name</label>
                                     <input
                                         type="text"
                                         id="name"
                                         name="name"
-                                        placeholder="John Doe"
-                                        required
+                                        placeholder="Enter your name..."
                                         class="form-input"
                                     />
+                                    <p id="nameError" class="form-error" style="color: #ef4444; font-size: 0.875rem; margin-top: 0.25rem;"></p>
                                 </div>
 
                                 <div class="form-group">
@@ -1895,34 +1822,36 @@ const pages = {
                                         type="email"
                                         id="email"
                                         name="email"
-                                        placeholder="john@example.com"
-                                        required
+                                        placeholder="your.email@example.com"
                                         class="form-input"
                                     />
+                                    <p id="emailError" class="form-error" style="color: #ef4444; font-size: 0.875rem; margin-top: 0.25rem;"></p>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="message" class="form-label">Your Message</label>
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                        <label for="message" class="form-label" style="margin-bottom: 0;">Your Message</label>
+                                        <span class="char-count" style="font-size: 0.75rem; color: #9ca3af;">0 / 500</span>
+                                    </div>
                                     <textarea
                                         id="message"
                                         name="message"
                                         placeholder="Write your message here..."
-                                        required
                                         class="form-textarea"
                                         rows="6"
                                     ></textarea>
+                                    <p id="messageError" class="form-error" style="color: #ef4444; font-size: 0.875rem; margin-top: 0.25rem;"></p>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                <button type="submit" class="btn btn-primary form-submit-btn" style="width: 100%;">
                                     <i data-lucide="send"></i>
                                     Send Message
                                 </button>
                             </form>
 
-                            <div style="margin-top: 1.5rem; padding: 1rem; background: linear-gradient(to right, #eff6ff, #faf5ff); border-radius: 1rem; border: 1px solid #e9d5ff;">
+                            <div style="margin-top: 1.5rem; padding: 1rem; background: linear-gradient(to right, #eff6ff, #faf5ff); border-radius: 1rem; border: 1px solid #a5f3fc;">
                                 <p style="color: #6b7280; font-size: 0.875rem;">
-                                    💡 <span style="color: #7e22ce; font-weight: 600;">Note:</span> This is a demo contact form. In production, 
-                                    messages would be sent to the email address or stored in a database.
+                                    ✓ <span style="color: #0369a1; font-weight: 600;">Advanced Validation:</span> Form includes real-time character count, email validation, and error messages. Your messages are securely sent via EmailJS. Alternatively, reach out directly via email or WhatsApp.
                                 </p>
                             </div>
                         </div>

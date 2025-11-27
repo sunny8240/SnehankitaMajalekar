@@ -1,51 +1,45 @@
-// Main application JavaScript
-
-// Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Lucide icons
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
+    if (typeof pages === 'undefined') {
+        console.warn('Pages not yet loaded, retrying...');
+        setTimeout(arguments.callee, 50);
+        return;
     }
     
-    // Set current year in footer
+    if (typeof lucide !== 'undefined') {
+        normalizeLucideAndCreate();
+    }
+    
     const currentYearElement = document.getElementById('currentYear');
     if (currentYearElement) {
         currentYearElement.textContent = new Date().getFullYear();
     }
     
-    // Initialize the app
     initializeApp();
     initializeNavigation();
     initializeMobileMenu();
     
-    // Handle initial page load
     const hash = window.location.hash.slice(1) || 'home';
     navigateToPage(hash);
 });
 
-// Initialize the application
 function initializeApp() {
     const mainContent = document.getElementById('mainContent');
     if (!mainContent) return;
     
-    // Load all pages into the DOM
     Object.keys(pages).forEach(pageName => {
         const pageDiv = document.createElement('div');
         pageDiv.innerHTML = pages[pageName];
         mainContent.appendChild(pageDiv.firstElementChild);
     });
     
-    // Re-initialize icons after adding content
     setTimeout(() => {
         if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
+            normalizeLucideAndCreate();
         }
     }, 100);
 }
 
-// Initialize navigation
 function initializeNavigation() {
-    // Desktop navigation links
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -55,7 +49,6 @@ function initializeNavigation() {
         });
     });
     
-    // Mobile navigation links
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -66,14 +59,11 @@ function initializeNavigation() {
         });
     });
     
-    // Handle browser back/forward buttons
     window.addEventListener('popstate', function() {
         const hash = window.location.hash.slice(1) || 'home';
         navigateToPage(hash, false);
     });
 }
-
-// Initialize mobile menu
 function initializeMobileMenu() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileNav = document.getElementById('mobileNav');
@@ -90,8 +80,6 @@ function initializeMobileMenu() {
         }
     });
 }
-
-// Open mobile menu
 function openMobileMenu() {
     const mobileNav = document.getElementById('mobileNav');
     const menuIcon = document.getElementById('menuIcon');
@@ -101,13 +89,11 @@ function openMobileMenu() {
     menuIcon.style.display = 'none';
     closeIcon.style.display = 'block';
     
-    // Re-initialize icons
     if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
+        normalizeLucideAndCreate();
     }
 }
 
-// Close mobile menu
 function closeMobileMenu() {
     const mobileNav = document.getElementById('mobileNav');
     const menuIcon = document.getElementById('menuIcon');
@@ -117,48 +103,68 @@ function closeMobileMenu() {
     menuIcon.style.display = 'block';
     closeIcon.style.display = 'none';
     
-    // Re-initialize icons
     if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
+        normalizeLucideAndCreate();
     }
 }
 
-// Navigate to a specific page
 function navigateToPage(pageName, updateHistory = true) {
-    // Hide all pages
-    const allPages = document.querySelectorAll('.page');
-    allPages.forEach(page => {
-        page.classList.remove('active');
-    });
-    
-    // Show the selected page
     const selectedPage = document.getElementById(pageName);
-    if (selectedPage) {
-        selectedPage.classList.add('active');
+    if (!selectedPage) return;
+
+    const currentPage = document.querySelector('.page.active');
+    if (currentPage === selectedPage) {
+        updateNavigationActive(pageName);
+        if (updateHistory) history.pushState(null, '', `#${pageName}`);
+        return;
     }
-    
-    // Update navigation active states
+
+    const loader = document.getElementById('pageLoader');
+    if (loader) loader.classList.add('visible');
+
     updateNavigationActive(pageName);
-    
-    // Update URL hash
+
     if (updateHistory) {
         history.pushState(null, '', `#${pageName}`);
     }
-    
-    // Scroll to top
+
     window.scrollTo(0, 0);
-    
-    // Re-initialize icons for dynamically loaded content
+
+    const exitDuration = 320; 
+    const enterDuration = 420; 
+    const loaderDuration = 600; 
+
+    if (currentPage) {
+        currentPage.classList.remove('page-enter');
+        currentPage.classList.add('page-exit');
+
+        setTimeout(() => {
+            currentPage.classList.remove('active', 'page-exit');
+            selectedPage.classList.add('active', 'page-enter');
+
+            setTimeout(() => {
+                selectedPage.classList.remove('page-enter');
+            }, enterDuration);
+        }, exitDuration);
+    } else {
+        selectedPage.classList.add('active', 'page-enter');
+        setTimeout(() => {
+            selectedPage.classList.remove('page-enter');
+        }, enterDuration);
+    }
+
+    setTimeout(() => {
+        if (loader) loader.classList.remove('visible');
+    }, loaderDuration);
+
     setTimeout(() => {
         if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
+            normalizeLucideAndCreate();
         }
-    }, 100);
+    }, 120);
 }
 
-// Update navigation active states
 function updateNavigationActive(pageName) {
-    // Update desktop nav
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         if (link.getAttribute('data-page') === pageName) {
@@ -168,7 +174,6 @@ function updateNavigationActive(pageName) {
         }
     });
     
-    // Update mobile nav
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
     mobileNavLinks.forEach(link => {
         if (link.getAttribute('data-page') === pageName) {
@@ -179,36 +184,19 @@ function updateNavigationActive(pageName) {
     });
 }
 
-// Handle WhatsApp click
 function handleWhatsAppClick() {
     const message = "Hello Dr. Snehankita, I would like to connect with you.";
     const whatsappUrl = `https://wa.me/917057371098?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 }
-
-// Handle form submission
 function handleFormSubmit(event) {
-    event.preventDefault();
-    
-    const form = event.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const message = form.message.value;
-    
-    // In a production environment, you would send this data to a server
-    // For now, we'll just show an alert
-    alert(`Thank you for your message, ${name}! This is a demo form. In a production environment, your message would be sent to Dr. Snehankita Majalekar.`);
-    
-    // Reset the form
-    form.reset();
+    console.log('Contact form submission delegated to contact-handler.js');
 }
 
-// Add smooth scrolling to anchor links
 document.addEventListener('click', function(e) {
     if (e.target.tagName === 'A' && e.target.getAttribute('href')?.startsWith('#')) {
         const hash = e.target.getAttribute('href').slice(1);
         
-        // Check if it's a page link
         if (pages[hash]) {
             e.preventDefault();
             navigateToPage(hash);
@@ -216,7 +204,6 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Add intersection observer for animations (optional enhancement)
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -231,7 +218,6 @@ const observer = new IntersectionObserver(function(entries) {
     });
 }, observerOptions);
 
-// Observe cards for animation
 setTimeout(() => {
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => {
@@ -242,19 +228,15 @@ setTimeout(() => {
     });
 }, 500);
 
-// Handle responsive grid layouts on window resize
 let resizeTimeout;
 window.addEventListener('resize', function() {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(function() {
-        // Re-initialize any layout-dependent features
         if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
+            normalizeLucideAndCreate();
         }
     }, 250);
 });
-
-// Prevent default anchor behavior for internal links
 document.addEventListener('click', function(e) {
     const target = e.target.closest('a');
     if (target && target.getAttribute('href')?.startsWith('#')) {
@@ -265,9 +247,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Add loading state management
 function showLoading() {
-    // Optional: Add a loading indicator
     document.body.style.cursor = 'wait';
 }
 
@@ -275,24 +255,136 @@ function hideLoading() {
     document.body.style.cursor = 'default';
 }
 
-// Enhanced page navigation with loading state
 function navigateToPageWithLoading(pageName) {
     showLoading();
     navigateToPage(pageName);
     setTimeout(hideLoading, 300);
 }
 
-// Add console log for debugging
 console.log('Faculty Website - Dr. Snehankita Majalekar');
 console.log('Academic Portfolio System Loaded Successfully');
 console.log('Available pages:', Object.keys(pages));
 
-// Add touch event support for mobile
 if ('ontouchstart' in window) {
     document.addEventListener('touchstart', function() {}, {passive: true});
 }
 
-// Performance optimization: Lazy load images if needed
+function normalizeLucideAndCreate() {
+    try {
+        const mapping = {
+            'key-round': 'key',
+            'link-2': 'link',
+            'bolt': 'zap',
+            'swords': 'sword',
+            'book-marked': 'book-open',
+            'shield-alert': 'shield-alert',
+            'presentation': 'monitor',
+            'linkedin': 'external-link'
+        };
+
+        document.querySelectorAll('i[data-lucide]').forEach(el => {
+            let name = el.getAttribute('data-lucide');
+            if (!name) return;
+            name = name.trim().replace(/\"|\'/g, '');
+            if (mapping[name] && mapping[name] !== name) {
+                el.setAttribute('data-lucide', mapping[name]);
+            }
+        });
+        lucide.createIcons();
+    } catch (e) {
+        console.warn('Lucide normalization failed', e);
+        try { lucide.createIcons(); } catch (err) { /* ignore */ }
+    }
+}
+
+function getScreenSize() {
+    const width = window.innerWidth;
+    if (width <= 640) return 'mobile';
+    if (width <= 1024) return 'tablet';
+    return 'desktop';
+}
+
+function applyResponsiveStyles() {
+    const screenSize = getScreenSize();
+    const mainContent = document.getElementById('mainContent');
+    
+    if (!mainContent) return;
+    
+    mainContent.classList.remove('mobile-view', 'tablet-view', 'desktop-view');
+    mainContent.classList.add(`${screenSize}-view`);
+    
+    const grids = mainContent.querySelectorAll('[style*="grid-template-columns"]');
+    grids.forEach(grid => {
+        if (screenSize === 'mobile') {
+            if (grid.style.gridTemplateColumns.includes('repeat(3')) {
+                grid.style.gridTemplateColumns = '1fr';
+                grid.style.gap = '1rem';
+            } else if (grid.style.gridTemplateColumns.includes('repeat(2')) {
+                grid.style.gridTemplateColumns = '1fr';
+                grid.style.gap = '1rem';
+            }
+        } else if (screenSize === 'tablet') {
+            if (grid.style.gridTemplateColumns.includes('repeat(3')) {
+                grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+                grid.style.gap = '1.25rem';
+            } else if (grid.style.gridTemplateColumns.includes('repeat(4')) {
+                grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+                grid.style.gap = '1.25rem';
+            }
+        }
+    });
+}
+
+function optimizeFontSizes() {
+    const screenSize = getScreenSize();
+    const rootElement = document.documentElement;
+    
+    if (screenSize === 'mobile') {
+        rootElement.style.fontSize = '14px';
+    } else if (screenSize === 'tablet') {
+        rootElement.style.fontSize = '15px';
+    } else {
+        rootElement.style.fontSize = '16px';
+    }
+}
+
+function optimizeSpacing() {
+    const screenSize = getScreenSize();
+    const mainContent = document.getElementById('mainContent');
+    
+    if (!mainContent) return;
+    
+    const cards = mainContent.querySelectorAll('.card');
+    
+    cards.forEach(card => {
+        if (screenSize === 'mobile') {
+            card.style.padding = '1.5rem';
+        } else if (screenSize === 'tablet') {
+            card.style.padding = '2rem';
+        } else {
+            card.style.padding = '2.5rem';
+        }
+    });
+}
+
+function initializeResponsive() {
+    applyResponsiveStyles();
+    optimizeFontSizes();
+    optimizeSpacing();
+}
+
+let responsiveTimeout;
+window.addEventListener('resize', function() {
+    clearTimeout(responsiveTimeout);
+    responsiveTimeout = setTimeout(function() {
+        initializeResponsive();
+    }, 150);
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(initializeResponsive, 500);
+});
+
 function lazyLoadImages() {
     const images = document.querySelectorAll('img[data-src]');
     const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -309,17 +401,7 @@ function lazyLoadImages() {
     images.forEach(img => imageObserver.observe(img));
 }
 
-// Call lazy load on page load
 setTimeout(lazyLoadImages, 1000);
 
-// Add service worker registration for PWA (optional)
-if ('serviceWorker' in navigator) {
-    // Uncomment to enable service worker
-    // navigator.serviceWorker.register('/sw.js').then(function(registration) {
-    //     console.log('Service Worker registered successfully:', registration);
-    // }).catch(function(error) {
-    //     console.log('Service Worker registration failed:', error);
-    // });
-}
 
 
